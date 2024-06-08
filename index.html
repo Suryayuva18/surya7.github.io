@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End Semester Exam Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>End Semester Exam Registration</h1>
+        <form class="registration-form">
+            <div class="form-group">
+                <label for="studentName">Student Name <span class="tooltip" data-tooltip="Enter your full name">?</span></label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+                <label for="studentID">Student ID <span class="tooltip" data-tooltip="Your unique student ID">?</span></label>
+                <input type="text" id="studentID" name="studentID" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course <span class="tooltip" data-tooltip="Select your course from the list">?</span></label>
+                <select id="course" name="course" required>
+                    <option value="" disabled selected>Select a course</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Business Administration">Business Administration</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Arts">Arts</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="examDate">Exam Date <span class="tooltip" data-tooltip="Choose the exam date">?</span></label>
+                <input type="text" id="examDate" name="examDate" class="datepicker" required>
+            </div>
+            <div class="form-group">
+                <label for="examTime">Exam Time <span class="tooltip" data-tooltip="Select the exam start time">?</span></label>
+                <input type="text" id="examTime" name="examTime" class="timepicker" required>
+            </div>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script>
+        flatpickr('.datepicker', {
+            dateFormat: 'Y-m-d',
+            minDate: 'today',
+            disable: [
+                function(date) {
+                    // Disable weekends
+                    return (date.getDay() === 0 || date.getDay() === 6);
+                }
+            ]
+        });
+        flatpickr('.timepicker', {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: 'H:i',
+            time_24hr: true,
+        });
+    </script>
+</body>
+</html>
